@@ -3,6 +3,7 @@ import type { TabsProps } from "antd";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import People from "./components/people";
+import FilmList from "./components/films";
 import classes from "./app.module.css";
 
 const items: TabsProps["items"] = [
@@ -14,7 +15,7 @@ const items: TabsProps["items"] = [
   {
     key: "2",
     label: `Films`,
-    children: `Content of Tab Pane 2`,
+    children: <FilmList />,
   },
   {
     key: "3",
