@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card, Tabs } from "antd";
+import type { TabsProps } from "antd";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import People from "./components/people";
+import classes from "./app.module.css";
+
+const items: TabsProps["items"] = [
+  {
+    key: "1",
+    label: `People`,
+    children: <People />,
+  },
+  {
+    key: "2",
+    label: `Films`,
+    children: `Content of Tab Pane 2`,
+  },
+  {
+    key: "3",
+    label: `Species`,
+    children: `Content of Tab Pane 3`,
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Card className={classes.card}>
+        <Tabs defaultActiveKey="1" items={items} onChange={() => {}} />
+      </Card>
+    </Provider>
   );
 }
 
