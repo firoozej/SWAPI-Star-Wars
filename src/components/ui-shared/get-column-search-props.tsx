@@ -11,8 +11,13 @@ export const getColumnSearchProps = ({
   handleFilter: (serachText: string, dataIndex: string) => void;
   handleResetFilter: () => void;
 }): ColumnType<any> => ({
-  filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
-    <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
+  filterDropdown: ({
+    setSelectedKeys,
+    selectedKeys,
+    confirm,
+    clearFilters,
+  }) => (
+    <div style={{ padding: 8 }}>
       <Input
         placeholder={`Search ${dataIndex}`}
         value={selectedKeys[0]}
@@ -36,7 +41,8 @@ export const getColumnSearchProps = ({
         </Button>
         <Button
           onClick={() => {
-            setSelectedKeys([]);
+            clearFilters && clearFilters()
+            confirm()
             handleResetFilter();
           }}
           size="small"
