@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { Species, ListQueryParams, ListResponse } from "../types";
+import { baseUrl } from "./config";
 
 export const speciesApi = createApi({
   reducerPath: "speciesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://swapi.dev/api/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     listspecies: builder.query<ListResponse<Species>, ListQueryParams>({
       query: ({ page = 1, search }) => {

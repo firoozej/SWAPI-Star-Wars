@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Film } from "../types";
-import { ListQueryParams, ListResponse } from "../types";
+import { ListQueryParams, ListResponse, Film } from "../types";
+import { baseUrl } from "./config";
 
 export const filmsApi = createApi({
   reducerPath: "filmsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://swapi.dev/api/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     listFilms: builder.query<ListResponse<Film>, ListQueryParams>({
       query: ({ page = 1, search }) => {
