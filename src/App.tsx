@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import People from "./components/people";
 import FilmList from "./components/films";
+import SpeciesList from "./components/species";
 import classes from "./app.module.css";
 
 const items: TabsProps["items"] = [
@@ -20,7 +21,7 @@ const items: TabsProps["items"] = [
   {
     key: "3",
     label: `Species`,
-    children: `Content of Tab Pane 3`,
+    children: <SpeciesList />,
   },
 ];
 
